@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Field = styled.div`
   display: block;
@@ -15,17 +15,19 @@ export const WrapperInput = styled.div`
   position: relative;
 `;
 
-export const Input = styled.input`
-  display: block;
-  width: 100%;
-  height: 36px;
-  border-radius: 20px;
-  padding: 0 42px 0 16px;
-  border: 2px solid #000000;
+export const Input = styled.input<any>`
+  ${({ notNumberMax }) => css`
+    display: block;
+    width: 100%;
+    height: 36px;
+    border-radius: 20px;
+    padding: 0 42px 0 16px;
+    border: ${notNumberMax ? '2px solid red' : '2px solid #000000'};
 
-  &:focus{
-    outline: none;
-  }
+    &:focus{
+      outline: none;
+    }
+  `}
 `
 
 export const Button = styled.button`
@@ -39,11 +41,11 @@ export const Button = styled.button`
   border: none;
   background-color: transparent;
 
-  >img{
-    transition: transform 0.3s ease;
+  > img{
+  transition: transform 0.3s ease;
 
     &:hover{
-      transform: scale(1.2);
-    }
+    transform: scale(1.2);
   }
+}
 `;

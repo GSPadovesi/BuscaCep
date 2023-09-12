@@ -12,14 +12,17 @@ export const Main = () => {
     setValor(event.target.value)
   }
 
-  console.log(valor)
+  const checkCep = (e) => {
+    const cep = e.target.value.replace(/\D/g, '');
+    console.log(cep)
+  }
 
   return (
     <S.Main>
       <S.MainContainer>
         <S.Title>Buscador de Cep</S.Title>
         <S.WrapperContent>
-          <Input placeholder="Digite o CEP" onChange={handleChange} maxLength={8} />
+          <Input placeholder='Digite seu CEP' onChange={handleChange} onBlur={checkCep} maxLength={10} notNumberMax={valor.length > 0 && valor.length < 8} />
           <S.Button onClick={() => navigate(`/post/${valor}`)}>Buscar</S.Button>
         </S.WrapperContent>
       </S.MainContainer>
