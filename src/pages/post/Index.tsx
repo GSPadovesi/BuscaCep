@@ -17,15 +17,16 @@ export const Post = () => {
     }
   }
 
+
   useEffect(() => {
     getPost()
   }, [])
 
-  console.log(post.cep)
+  console.log(post)
 
   return (
     <S.Post>
-      <S.Title>CEP: {post.cep}</S.Title>
+      <S.Title>CEP: {!post.cep ? 'esse cep não é valido' : post.cep}</S.Title>
     </S.Post>
   )
 }

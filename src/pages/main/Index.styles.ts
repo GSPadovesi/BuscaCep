@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const Main = styled.section`
   width: 100%;
   height: 80vh;
@@ -56,3 +57,4 @@ export const Button = styled.button`
     background-color: #757575;
   }
 `;
+
