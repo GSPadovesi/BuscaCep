@@ -8,7 +8,7 @@ export const Footer = styled.footer`
   overflow: hidden;
   background-color: #757575;
   border-top: 2px solid #000000;
-  border-radius: 3px;
+  border-radius: 3px 3px 0px 0px;
 `;
 
 export const FooterContainer = styled.div`

@@ -1,16 +1,15 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Input } from '../../components/Input/Input'
 import { useNavigate } from 'react-router-dom';
 import { toast, Toaster } from 'react-hot-toast';
 import * as S from './Index.styles'
+import axios from 'axios';
 
 
 
 export const Main = () => {
 
   const [valor, setValor] = useState('');
-  // const [cep, setCep] = useState('');
-  // const isValid = cep.length < 8 || cep.length > 9;
   const navigate = useNavigate();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,14 +34,13 @@ export const Main = () => {
     }
   }
 
-
   return (
     <S.Main>
       <S.MainContainer>
         <S.Title>Buscador de Cep</S.Title>
         <S.WrapperContent>
           <Input placeholder={insertMaskInCep('00000-000')} onChange={handleChange} onBlur={checkCep} maxLength={9} />
-          <S.Button onClick={() => confirmCep(valor)}>Buscar</S.Button>
+          <S.Button onClick={() => confirmCep(valor)}>Pesquisar</S.Button>
         </S.WrapperContent>
       </S.MainContainer>
       {<Toaster />}
