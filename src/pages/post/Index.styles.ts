@@ -13,6 +13,7 @@ export const Title = styled.h1`
   font-size: 16px;
   font-weight: 700;
   font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
   
   @media (min-width: 768px) {
     font-size: 24px;

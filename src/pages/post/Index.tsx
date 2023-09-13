@@ -5,7 +5,7 @@ import * as S from './Index.styles'
 
 export const Post = () => {
   const { id } = useParams();
-  const [post, setPost] = useState([]);
+  const [post, setPost] = useState<any>([]);
 
   const getPost = async () => {
     try {
@@ -20,6 +20,8 @@ export const Post = () => {
   useEffect(() => {
     getPost()
   }, [])
+
+  console.log(post.cep)
 
   return (
     <S.Post>
