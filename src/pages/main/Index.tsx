@@ -9,8 +9,8 @@ import * as S from './Index.styles'
 export const Main = () => {
 
   const [valor, setValor] = useState('');
-  const [cep, setCep] = useState('');
-  const isValid = cep.length < 8 || cep.length > 9;
+  // const [cep, setCep] = useState('');
+  // const isValid = cep.length < 8 || cep.length > 9;
   const navigate = useNavigate();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,16 +23,15 @@ export const Main = () => {
   }
 
   const insertMaskInCep = (cep: string) => {
-    return cep.replace(/^(\d{5})(\d{3})/, '$1-$2').replace('-', '');
+    return cep.replace(/^(\d{5})(\d{3})/, '$1-$2');
   }
 
   const confirmCep = (cepValue: any) => {
-    const cepRegex = cepValue.replace(/^(\d{5})(\d{3})/, '$1-$2');
-    setCep(cepRegex)
-    if (isValid) {
+    const cepRegex = cepValue.replace(/\d{5}-?\d{3}/gi).replace('-', '');
+    if (cepRegex.length < 8 || cepRegex.length > 9) {
       toast.error('CEP inválido')
     } else {
-      navigate(`/post/${cepRegex}`)
+      navigate(`/post/${cepValue}`)
     }
   }
 
