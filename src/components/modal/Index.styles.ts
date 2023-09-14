@@ -14,11 +14,58 @@ export const Modal = styled.div`
   margin: 0;
 `;
 
+export const ModalContent = styled.div`
+	position: relative;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  margin: auto;
+  max-width: calc(100vw - 40px);
+  max-height: calc(100vh - 40px);
+  z-index: 1000;
+
+  @media (min-width: 1024px) {
+    max-width: calc(60vw - 40px);
+  }
+
+  @media(min-width: 1440px){
+    max-width: calc(40vw - 40px);
+  }
+`;
 
 export const CloseButton = styled.button`
   position: absolute;
-  top: 0;
+  top: 10px;
   right: 25px;
-  width: 30px;
-  height: 30px;
+  transition: transform 0.2s ease-in-out;
+
+  &:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    transform: rotate(45deg);
+    width: 20px;
+    height: 5px;
+    background-color: #757575;
+    border: none;
+    border-radius: 20px;
+  }
+
+  &:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    transform: rotate(-45deg);
+    width: 20px;
+    height: 5px;
+    background-color: #757575; 
+    border: none;
+    border-radius: 20px;
+
+  }
+
+  &:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
 `
