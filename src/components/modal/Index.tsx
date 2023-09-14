@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
 import { ModalProps } from './Index.types'
-import * as S from './Index.styles'
 import axios from 'axios';
+import Error from '../../assets/error.png'
+import * as S from './Index.styles'
 
 export const Modal = ({ isOpen, setIsOpen, cep }: ModalProps) => {
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any>([]);
 
   const closeModal = useCallback(() => {
     setIsOpen(false);
@@ -32,17 +33,43 @@ export const Modal = ({ isOpen, setIsOpen, cep }: ModalProps) => {
     }
   }, [isOpen]);
 
+  console.log(data);
+
   return (
     <>
       {!!isOpen &&
         <S.Modal>
           <S.ModalContent>
             <S.ModalContainerTitle>
-              <S.Title>CEP: {data.cep}</S.Title>
+              <S.Title>CEP: {!data.cep ? 'Esse cep não é valido' : data.cep}</S.Title>
               <S.CloseButton onClick={closeModal}></S.CloseButton>
             </S.ModalContainerTitle>
+            {!!data.cep ?
+              < S.ModalContainerContent >
+                <S.WrapperContent>
+                  <S.Title>Logradouro:</S.Title>
+                  <S.Paragraph>{data.logradouro} {data.complemento}</S.Paragraph>
+                </S.WrapperContent>
+                <S.WrapperContent>
+                  <S.Title>Bairro:</S.Title>
+                  <S.Paragraph>{data.bairro}</S.Paragraph>
+                </S.WrapperContent>
+                <S.WrapperContent>
+                  <S.Title>Localidade/uf:</S.Title>
+                  <S.Paragraph>{data.localidade} / {data.uf}</S.Paragraph>
+                </S.WrapperContent>
+                <S.WrapperContent>
+                  <S.Title>IBGE:</S.Title>
+                  <S.Paragraph>{data.ibge}</S.Paragraph>
+                </S.WrapperContent>
+              </S.ModalContainerContent>
+              :
+              <S.ModalContainerContent>
+                <S.Image src={Error} />
+              </S.ModalContainerContent>
+            }
           </S.ModalContent>
-        </S.Modal>
+        </S.Modal >
       }
     </>
   )

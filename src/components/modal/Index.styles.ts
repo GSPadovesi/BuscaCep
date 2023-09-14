@@ -83,7 +83,7 @@ export const ModalContainerTitle = styled.div`
   position: relative;
 `
 
-export const Title = styled.h1`
+export const Title = styled.h2`
   color: #757575;
   font-size: 16px;
   font-weight: 700;
@@ -94,6 +94,47 @@ export const Title = styled.h1`
   }
 
   @media (min-width: 1024px) {
-    font-size: 32px;
+    font-size: 28px;
   }
+`
+
+export const ModalContainerContent = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 20px;
+  padding: 20px;
+`
+export const Paragraph = styled.p`
+  color: #757575;
+  font-size: 13px;
+  font-weight: 400;
+  font-family: Arial, Helvetica, sans-serif;
+
+  @media(min-width: 768px){
+    font-size: 16px;
+  }
+
+  @media(min-width: 1024px){
+    font-size: 18px;
+  }
+
+  @media(min-width: 1440px){
+    font-size: 20px;
+  }
+`
+
+export const WrapperContent = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+`
+
+export const Image = styled.img`
+  width: 150px;
+  height: 150px;
+  align-self: center;
 `
