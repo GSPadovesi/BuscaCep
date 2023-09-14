@@ -7,14 +7,6 @@ export const Modal = ({ isOpen, setIsOpen, cep }: ModalProps) => {
 
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : 'auto'
-    return () => {
-      document.body.style.overflow = 'auto';
-    }
-  }, [isOpen]);
-
-
   const closeModal = useCallback(() => {
     setIsOpen(false);
   }, [setIsOpen]);
@@ -33,15 +25,22 @@ export const Modal = ({ isOpen, setIsOpen, cep }: ModalProps) => {
     getPost()
   }, [])
 
-  console.log(data)
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : 'auto'
+    return () => {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isOpen]);
 
   return (
     <>
       {!!isOpen &&
         <S.Modal>
           <S.ModalContent>
-            <S.CloseButton onClick={closeModal}></S.CloseButton>
-            <h1>Olá, mundo</h1>
+            <S.ModalContainerTitle>
+              <S.Title>CEP: {data.cep}</S.Title>
+              <S.CloseButton onClick={closeModal}></S.CloseButton>
+            </S.ModalContainerTitle>
           </S.ModalContent>
         </S.Modal>
       }

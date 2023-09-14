@@ -20,16 +20,19 @@ export const ModalContent = styled.div`
   border-radius: 10px;
   padding: 30px;
   margin: auto;
-  max-width: calc(100vw - 40px);
-  max-height: calc(100vh - 40px);
+  width: 300px;
+  height: 400px;
+  /* max-width: calc(100vw - 40px);
+  max-height: calc(100vh - 40px); */
   z-index: 1000;
 
-  @media (min-width: 1024px) {
-    max-width: calc(60vw - 40px);
+  @media (min-width: 768px) {
+    width: 500px;
+    height: 500px;
   }
 
   @media(min-width: 1440px){
-    max-width: calc(40vw - 40px);
+    width: 600px;
   }
 `;
 
@@ -44,7 +47,7 @@ export const CloseButton = styled.button`
     position: absolute;
     left: 0;
     transform: rotate(45deg);
-    width: 20px;
+    width: 30px;
     height: 5px;
     background-color: #757575;
     border: none;
@@ -56,7 +59,7 @@ export const CloseButton = styled.button`
     position: absolute;
     left: 0;
     transform: rotate(-45deg);
-    width: 20px;
+    width: 30px;
     height: 5px;
     background-color: #757575; 
     border: none;
@@ -67,5 +70,30 @@ export const CloseButton = styled.button`
   &:hover {
     transform: scale(1.2);
     opacity: 0.8;
+  }
+`
+
+export const ModalContainerTitle = styled.div`
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #757575; 
+  position: relative;
+`
+
+export const Title = styled.h1`
+  color: #757575;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+  
+  @media (min-width: 768px) {
+    font-size: 24px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 32px;
   }
 `
